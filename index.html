@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mr et web</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="portofolio.css" rel="stylesheet" type="text/css"/>
+
+
+    </head>
+    <body>
+
+        <!-- MAIN (Center website) -->
+        <div class="main">
+
+            <h1>Marie R</h1>
+            <hr>
+
+            <h2>PORTFOLIO</h2>
+
+            <div id="myBtnContainer">
+                <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+                <button class="btn" onclick="filterSelection('nature')"> Informatique</button>
+                <button class="btn" onclick="filterSelection('cars')"> Bien être</button>
+                <button class="btn" onclick="filterSelection('people')"> En ligne</button>
+            </div>
+
+            <!-- Portfolio Gallery Grid -->
+            <div class="row">
+                <div class="column nature">
+                    <div class="content">
+                        <a href="Desktop.html">
+                        <img src="images/desktop.png" alt="Mountains" style="width:100%">
+                        </a>
+                        <h4>Desktop</h4>
+                        <p>PC et ses péripheriques</p>
+                    </div>
+                </div>
+                <div class="column nature">
+                    <div class="content">
+                        <a href="claver_souris.html">
+                        <img src="images/clavier_souris.jpg" alt="Lights" style="width:100%">
+                        </a>
+                        
+                        <h4>Clavier Souris</h4>
+                        <p>Outils dynamiques</p>
+                    </div>
+                </div>
+                <div class="column nature">:
+                    <div class="content">
+                        <a href="logiciels.html">
+                        <img src="images/logiciels.jpg" alt="Nature" style="width:100%">
+                        </a>
+                        <h4>Logiciels</h4>
+                        <p>Chemin vers des apprentissages..</p>
+                    </div>
+                </div>
+
+                <div class="column cars">
+                    <div class="content">
+                        <a href="fruits_legumes.html">
+                        <img src="images/fruits_legumes.jpg" alt="" style="width:100%">
+                        </a>
+                        <h4>Fruits et Légumes</h4>
+                        <p>Riches en vitamines..</p>
+                    </div>
+                </div>
+                <div class="column cars">
+                    <div class="content">
+                        <a href="menu_equilibre.html">
+                        <img src="images/menu_equilibre.jpg" alt="" style="width:100%">
+                        </a>
+                        <h4>Poisson</h4>
+                        <p>Manger équilibré..</p>
+                    </div>
+                </div>
+                <div class="column cars">
+                    <div class="content">
+                     <a href="vegetarien.html">    
+                        <img src="images/vegetarien.jpg" alt="" style="width:100%">
+                     </a>
+                        <h4>Classic</h4>
+                        <p>Menu pas comme les autres..</p>
+                    </div>
+                </div>
+
+                <div class="column people">
+                    <div class="content">
+                         <a href="Drive.html">
+                        <img src="images/Drive.jpg" alt="" style="width:100%">
+                         </a>
+                        <h4>Drive</h4>
+                        <p>Stockage en nuage..</p>
+                    </div>
+                </div>
+                <div class="column people">
+                    <div class="content">
+                         <a href="Internet recherche.html">
+                        <img src="images/internet recherche.jpg" alt="" style="width:100%">
+                         </a>
+                        <h4>Internet</h4>
+                        <p>Recherche facile..</p>
+                    </div>
+                </div>
+                <div class="column people">
+                    <div class="content">
+                         <a href="Boite mail.html">
+                        <img src="images/boite mail.jpg" alt="" style="width:100%">
+                         </a>
+                        <h4>Boîte mail</h4>
+                        <p>Messagerie en ligne..</p>
+                    </div>
+                </div>
+                <!-- END GRID -->
+            </div>
+
+            <!-- END MAIN -->
+        </div>
+
+        <script>
+            filterSelection("all")
+            function filterSelection(c) {
+                var x, i;
+                x = document.getElementsByClassName("column");
+                if (c == "all")
+                    c = "";
+                for (i = 0; i < x.length; i++) {
+                    w3RemoveClass(x[i], "show");
+                    if (x[i].className.indexOf(c) > -1)
+                        w3AddClass(x[i], "show");
+                }
+            }
+
+            function w3AddClass(element, name) {
+                var i, arr1, arr2;
+                arr1 = element.className.split(" ");
+                arr2 = name.split(" ");
+                for (i = 0; i < arr2.length; i++) {
+                    if (arr1.indexOf(arr2[i]) == -1) {
+                        element.className += " " + arr2[i];
+                    }
+                }
+            }
+
+            function w3RemoveClass(element, name) {
+                var i, arr1, arr2;
+                arr1 = element.className.split(" ");
+                arr2 = name.split(" ");
+                for (i = 0; i < arr2.length; i++) {
+                    while (arr1.indexOf(arr2[i]) > -1) {
+                        arr1.splice(arr1.indexOf(arr2[i]), 1);
+                    }
+                }
+                element.className = arr1.join(" ");
+            }
+
+
+            // Add active class to the current button (highlight it)
+            var btnContainer = document.getElementById("myBtnContainer");
+            var btns = btnContainer.getElementsByClassName("btn");
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].addEventListener("click", function () {
+                    var current = document.getElementsByClassName("active");
+                    current[0].className = current[0].className.replace(" active", "");
+                    this.className += " active";
+                });
+            }
+        </script>
+
+    </body>
+</html>
